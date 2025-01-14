@@ -244,8 +244,8 @@ local MovementTab = Window:CreateTab("Movement", "footprints")
 local TweenSection = MovementTab:CreateSection("Tween")
 
 local TweenSpeedSlider = MovementTab:CreateSlider({
-    Name = "Slider Example",
-    Range = {100, 380},
+    Name = "Set Tween Speed",
+    Range = {100, 350},
     Increment = 10,
     Suffix = "studs",
     CurrentValue = 300,
@@ -260,7 +260,7 @@ local TweenSpeedSlider = MovementTab:CreateSlider({
 
 local TweenDropdown = MovementTab:CreateDropdown({
     Name = "Select Location",
-    Options = {"Castle on the Sea", "Turtle Mansion", "Castle TP"},
+    Options = {"Castle on the Sea", "Raid area", "Turtle Mansion", "Hydra Island", "Tiki Outpost"},
     CurrentOption = {"Castle on the Sea"},
     MultipleOptions = false,
     Flag = "TweenDropdown", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
@@ -275,8 +275,14 @@ local TweenDropdown = MovementTab:CreateDropdown({
         option = TweenDropdown.CurrentOption[1]
         if option == "Castle on the Sea" then
             Teleport(CFrame.new(-5010, 314, -2995))
+        end if option == "Raid area" then
+            Teleport(CFrame.new(-5027, 314, -2841))
         end if option == "Turtle Mansion" then
             Teleport(CFrame.new(-12550, 337, -7500))
+        end if option == "Hydra Island" then
+            Teleport(CFrame.new(5292, 1005, 394))
+        end if option == "Tiki Outpost" then
+            Teleport(CFrame.new(-16953, 12, 488))
         end
     end,
  })
