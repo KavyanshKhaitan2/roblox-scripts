@@ -232,7 +232,7 @@ local GetCFrame = MainTab:CreateButton({
     Callback = function()
         Rayfield:Notify({
             Title = "Player Position",
-            Content = getCharacter().HumanoidRootPart.Position,
+            Content = tostring(getCharacter().HumanoidRootPart.Position),
             Duration = 6.5,
             Image = "rabbit",
          })
