@@ -71,7 +71,7 @@ local function Teleport(Goal: CFrame, Speed)
     toggleNoclip(false)
 end
 
-local function ChestIterate()
+function ChestIterate()
   wait()
   local Chests = getChestsSorted()
   if #Chests > 0 then
