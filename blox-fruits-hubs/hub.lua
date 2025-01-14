@@ -228,7 +228,7 @@ local StartChestHop = MainTab:CreateButton({
 
 local DevSection = MainTab:CreateSection("Developer Options")
 local GetCFrame = MainTab:CreateButton({
-    Name = "Get CFrame"
+    Name = "Get CFrame",
     Callback = function()
         Rayfield:Notify({
             Title = "Player Position",
