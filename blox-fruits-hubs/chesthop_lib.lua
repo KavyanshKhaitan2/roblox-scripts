@@ -1,3 +1,7 @@
+local ChesthopLibrary = {
+    
+}
+
 
 local MaxSpeed = 300 -- Studs per second 380 no flag but kick
 
@@ -71,7 +75,7 @@ local function Teleport(Goal: CFrame, Speed)
     toggleNoclip(false)
 end
 
-function ChestIterate()
+function ChesthopLibrary:ChestIterate()
   wait()
   local Chests = getChestsSorted()
   if #Chests > 0 then
@@ -81,4 +85,4 @@ function ChestIterate()
   end
 end
 
-return ChestIterate
+return ChesthopLibrary
