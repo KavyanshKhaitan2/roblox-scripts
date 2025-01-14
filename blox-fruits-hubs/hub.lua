@@ -218,6 +218,7 @@ ChestHopToggle:Set(false)
 local StartChestHop = MainTab:CreateButton({
    Name = "Start Chesthop",
    Callback = function()
+        ChestHopToggle:Set(true)
         wait(1)
         while ChestHopToggle.CurrentValue do
             ChestIterate()
