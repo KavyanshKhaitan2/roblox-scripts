@@ -80,3 +80,5 @@ local function ChestIterate()
       -- You can put serverhop here
   end
 end
+
+return ChestIterate
