@@ -262,7 +262,7 @@ local TweenDropdown = MovementTab:CreateDropdown({
         end if option == "Turtle Mansion" then
             Teleport(CFrame.new(-12550, 337, -7500))
         end if option == "Castle TP" then
-            getCharacter.HumanoidRootPart.CFrame = CFrame.new(-12463, 376, -7566)
+            getCharacter().HumanoidRootPart.CFrame = CFrame.new(-12463, 376, -7566)
         end
     end,
  })
