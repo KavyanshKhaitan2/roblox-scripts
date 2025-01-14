@@ -242,6 +242,22 @@ local GetPlayerPosition = MainTab:CreateButton({
 
 local MovementTab = Window:CreateTab("Movement", "footprints")
 local TweenSection = MovementTab:CreateSection("Tween")
+
+local TweenSpeedSlider = Tab:CreateSlider({
+    Name = "Slider Example",
+    Range = {100, 380},
+    Increment = 10,
+    Suffix = "studs",
+    CurrentValue = 300,
+    Flag = "TweenSpeedSlider", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(Value)
+        MaxSpeed = Value
+    end,
+ })
+ 
+ 
+ 
+
 local TweenDropdown = MovementTab:CreateDropdown({
     Name = "Select Location",
     Options = {"Castle on the Sea", "Turtle Mansion", "Castle TP"},
