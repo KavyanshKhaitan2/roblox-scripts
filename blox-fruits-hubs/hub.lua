@@ -244,7 +244,7 @@ local MovementTab = Window:CreateTab("Movement", "footprints")
 local TweenSection = MovementTab:CreateSection("Tween")
 local TweenDropdown = MovementTab:CreateDropdown({
     Name = "Select Location",
-    Options = {"Castle on the Sea", "Turtle Mansion", "Castle Teleport"},
+    Options = {"Castle on the Sea", "Turtle Mansion", "Castle TP"},
     CurrentOption = {"Castle on the Sea"},
     MultipleOptions = false,
     Flag = "TweenDropdown", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
@@ -261,6 +261,8 @@ local TweenDropdown = MovementTab:CreateDropdown({
             Teleport(CFrame.new(-5010, 314, -2995))
         end if option == "Turtle Mansion" then
             Teleport(CFrame.new(-12550, 337, -7500))
-        end 
+        end if option == "Castle TP" then
+            getCharacter.HumanoidRootPart.CFrame = CFrame.new(-12463, 376, -7566)
+        end
     end,
  })
