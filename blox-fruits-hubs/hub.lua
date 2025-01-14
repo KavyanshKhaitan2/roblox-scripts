@@ -225,3 +225,16 @@ local StartChestHop = MainTab:CreateButton({
         end
     end,
 })
+
+local DevSection = MainTab:CreateSection("Developer Options")
+local GetCFrame = MainTab:CreateButton({
+    Name = "Get CFrame"
+    Callback = function()
+        Rayfield:Notify({
+            Title = "Player Position",
+            Content = getCharacter().HumanoidRootPart.Position,
+            Duration = 6.5,
+            Image = "rabbit",
+         })
+         
+})
