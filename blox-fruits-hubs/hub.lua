@@ -239,3 +239,28 @@ local GetPlayerPosition = MainTab:CreateButton({
          })
     end,
 })
+
+local MovementTab = Window:CreateTab("Movement", "footprints")
+local TweenSection = MovementTab:CreateSection("Tween")
+local TweenDropdown = MovementTab:CreateDropdown({
+    Name = "Select Location",
+    Options = {"Castle on the Sea", "Turtle Mansion"},
+    CurrentOption = {"Castle on the Sea"},
+    MultipleOptions = false,
+    Flag = "TweenDropdown", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(Options)
+        -- pass
+    end,
+ })
+
+ local TweenButton = MovementTab:CreateButton({
+    Name = "Tween...",
+    Callback = function()
+        option = TweenDropdown.CurrentOption[1]
+        if option == "Castle on the Sea" then
+            Teleport(CFrame.new(-5010, 314, -2995))
+        end if option == "Turtle Mansion" then
+            Teleport(CFrame.new(-12550, 337, -7500))
+        end
+    end,
+ })
