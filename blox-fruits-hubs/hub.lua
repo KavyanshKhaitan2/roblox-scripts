@@ -231,5 +231,11 @@ local GetPlayerPosition = MainTab:CreateButton({
     Name = "Get Player Vector3 Position",
     Callback = function()
         print(getCharacter().HumanoidRootPart.Position)
+        Rayfield:Notify({
+            Title = "Player Position Logged",
+            Content = "Press [F9] to view Console",
+            Duration = 6.5,
+            Image = "rabbit",
+         })
     end,
 })
