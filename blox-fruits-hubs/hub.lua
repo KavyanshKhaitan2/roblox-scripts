@@ -227,8 +227,8 @@ local StartChestHop = MainTab:CreateButton({
 })
 
 local DevSection = MainTab:CreateSection("Developer Options")
-local GetCFrame = MainTab:CreateButton({
-    Name = "Get CFrame",
+local GetPlayerPosition = MainTab:CreateButton({
+    Name = "Get Player Vector3 Position",
     Callback = function()
         print(getCharacter().HumanoidRootPart.Position)
     end,
