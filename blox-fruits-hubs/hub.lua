@@ -216,7 +216,7 @@ local ChestHopToggle = MainTab:CreateToggle({
 ChestHopToggle:Set(false)
 
 local StartChestHop = MainTab:CreateButton({
-   Name = "Start Chesthop",
+   Name = "Start Chest Hop",
    Callback = function()
         ChestHopToggle:Set(true)
         wait(1)
@@ -261,8 +261,6 @@ local TweenDropdown = MovementTab:CreateDropdown({
             Teleport(CFrame.new(-5010, 314, -2995))
         end if option == "Turtle Mansion" then
             Teleport(CFrame.new(-12550, 337, -7500))
-        end if option == "Castle TP" then
-            getCharacter().HumanoidRootPart.CFrame = CFrame.new(-12463, 376, -7566)
         end
     end,
  })
