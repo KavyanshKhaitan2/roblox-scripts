@@ -243,7 +243,7 @@ local GetPlayerPosition = MainTab:CreateButton({
 local MovementTab = Window:CreateTab("Movement", "footprints")
 local TweenSection = MovementTab:CreateSection("Tween")
 
-local TweenSpeedSlider = Tab:CreateSlider({
+local TweenSpeedSlider = MovementTab:CreateSlider({
     Name = "Slider Example",
     Range = {100, 380},
     Increment = 10,
