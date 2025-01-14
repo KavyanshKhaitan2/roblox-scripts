@@ -236,5 +236,5 @@ local GetCFrame = MainTab:CreateButton({
             Duration = 6.5,
             Image = "rabbit",
          })
-         
+    end,
 })
