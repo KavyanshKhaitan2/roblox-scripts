@@ -158,6 +158,12 @@ end
 
 wait = task.wait
 
+-- Get player from Username
+local function selectPlayerByUsername(playerName)
+    local playerUserId = game.Players:GetUserIdFromNameAsync(playerName)
+    local player = game.Players:GetPlayerByUserId(playerUserId)
+    if player then return player end
+end
 -- Create Window
 
 local Window = Rayfield:CreateWindow({
@@ -258,7 +264,7 @@ local TweenSpeedSlider = MovementTab:CreateSlider({
 
 local TweenToIslandDropdown = MovementTab:CreateDropdown({
     Name = "Select Location",
-    Options = {"Castle on the Sea", "Turtle Mansion", "Hydra Island", "Port Town", "Great Tree", "Tiki Outpost", "Floating Turtle", "Dragon Dojo", "Training Dummy"},
+    Options = {"Castle on the Sea", "Turtle Mansion", "Hydra Island", "Haunted Castle", "Port Town", "Great Tree", "Tiki Outpost", "Floating Turtle", "Dragon Dojo", "Training Dummy"},
     CurrentOption = {"Castle on the Sea"},
     MultipleOptions = false,
     Flag = "TweenDropdown", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
@@ -277,6 +283,8 @@ local TweenToIslandDropdown = MovementTab:CreateDropdown({
             Teleport(CFrame.new(-12550, 337, -7500))
         end if option == "Hydra Island" then
             Teleport(CFrame.new(5292, 1005, 394))
+        end if option == "Haunted Castle" then
+            Teleport(CFrame.new(-9517, 143, 5528))
         end if option == "Port Town" then
             Teleport(CFrame.new(-339, 21, -5537))
         end if option == "Great Tree" then
@@ -296,21 +304,10 @@ local TweenToIslandDropdown = MovementTab:CreateDropdown({
 
 local TweenToPlayerSection = MovementTab:CreateSection("Tween to Player")
 
-local RefreshPlayersButton = MovementTab:CreateButton({
-    Name = "Refresh Player List",
-    Callback = function()
-        list_of_player_names = {}
-        for _, v in game.Players:GetPlayers() do
-            table.insert(list_of_player_names, v.Name)
-        end
-        PlayerDropdown:Set(list_of_player_names)
-    end,
-})
-
 local PlayerDropdown = MovementTab:CreateDropdown({
     Name = "Select Player",
-    Options = {},
-    CurrentOption = {"..."},
+    Options = {"Select player..."},
+    CurrentOption = {"Select player..."},
     MultipleOptions = false,
     Flag = "Dropdown1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
     Callback = function(Options)
@@ -319,9 +316,23 @@ local PlayerDropdown = MovementTab:CreateDropdown({
     end,
 })
 
+local RefreshPlayersButton = MovementTab:CreateButton({
+    Name = "Refresh Player List",
+    Callback = function()
+        list_of_player_names = {}
+        for _, v in game.Players:GetPlayers() do
+            table.insert(list_of_player_names, v.Name)
+        end
+        PlayerDropdown.Options = ({"Select player...", table.unpack(list_of_player_names)})
+        PlayerDropdown:Refresh({"Select player...", table.unpack(list_of_player_names)})
+    end,
+})
+
 local TweenToPlayerButton = MovementTab:CreateButton({
     Name = "Tween to Player",
     Callback = function()
-    -- The function that takes place when the button is pressed
+        target_CFrame = selectPlayerByUsername(PlayerDropdown.CurrentOption[1]).Character.HumanoidRootPart.CFrame
+        print('teleporting...')
+        Teleport(target_CFrame)
     end,
 })
