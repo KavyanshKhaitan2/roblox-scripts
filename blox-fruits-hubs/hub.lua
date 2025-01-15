@@ -241,8 +241,6 @@ local GetPlayerPosition = MainTab:CreateButton({
 })
 
 local MovementTab = Window:CreateTab("Movement", "footprints")
-local TweenSection = MovementTab:CreateSection("Tween")
-
 local TweenSpeedSlider = MovementTab:CreateSlider({
     Name = "Set Tween Speed",
     Range = {100, 350},
@@ -253,14 +251,14 @@ local TweenSpeedSlider = MovementTab:CreateSlider({
     Callback = function(Value)
         MaxSpeed = Value
     end,
- })
- 
- 
- 
+ }) 
 
-local TweenDropdown = MovementTab:CreateDropdown({
+ local TweenToIslandSection = MovementTab:CreateSection("Tween to Island")
+
+
+local TweenToIslandDropdown = MovementTab:CreateDropdown({
     Name = "Select Location",
-    Options = {"Castle on the Sea", "Raid area", "Turtle Mansion", "Hydra Island", "Tiki Outpost"},
+    Options = {"Castle on the Sea", "Turtle Mansion", "Hydra Island", "Port Town", "Great Tree", "Tiki Outpost", "Floating Turtle", "Dragon Dojo", "Training Dummy"},
     CurrentOption = {"Castle on the Sea"},
     MultipleOptions = false,
     Flag = "TweenDropdown", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
@@ -269,20 +267,61 @@ local TweenDropdown = MovementTab:CreateDropdown({
     end,
  })
 
- local TweenButton = MovementTab:CreateButton({
+ local TweenToIslandButton = MovementTab:CreateButton({
     Name = "Tween...",
     Callback = function()
-        option = TweenDropdown.CurrentOption[1]
+        option = TweenToIslandDropdown.CurrentOption[1]
         if option == "Castle on the Sea" then
             Teleport(CFrame.new(-5010, 314, -2995))
-        end if option == "Raid area" then
-            Teleport(CFrame.new(-5027, 314, -2841))
         end if option == "Turtle Mansion" then
             Teleport(CFrame.new(-12550, 337, -7500))
         end if option == "Hydra Island" then
             Teleport(CFrame.new(5292, 1005, 394))
+        end if option == "Port Town" then
+            Teleport(CFrame.new(-339, 21, -5537))
+        end if option == "Great Tree" then
+            Teleport(CFrame.new(2436, 75, -6798))
         end if option == "Tiki Outpost" then
             Teleport(CFrame.new(-16953, 12, 488))
+        end if option == "Floating Turtle" then
+            Teleport(CFrame.new(-16953, 12, 488))
+        end if option == "Dragon Dojo" then
+            Teleport(CFrame.new(5691, 1208, 919))
+        end if option == "Training Dummy" then
+            Teleport(CFrame.new(3497, 10, 175))
         end
     end,
  })
+
+
+local TweenToPlayerSection = MovementTab:CreateSection("Tween to Player")
+
+local RefreshPlayersButton = MovementTab:CreateButton({
+    Name = "Refresh Player List",
+    Callback = function()
+        list_of_player_names = {}
+        for _, v in game.Players:GetPlayers() do
+            table.insert(list_of_player_names, v.Name)
+        end
+        PlayerDropdown:Set(list_of_player_names)
+    end,
+})
+
+local PlayerDropdown = MovementTab:CreateDropdown({
+    Name = "Select Player",
+    Options = {},
+    CurrentOption = {"..."},
+    MultipleOptions = false,
+    Flag = "Dropdown1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(Options)
+    -- The function that takes place when the selected option is changed
+    -- The variable (Options) is a table of strings for the current selected options
+    end,
+})
+
+local TweenToPlayerButton = MovementTab:CreateButton({
+    Name = "Tween to Player",
+    Callback = function()
+    -- The function that takes place when the button is pressed
+    end,
+})
