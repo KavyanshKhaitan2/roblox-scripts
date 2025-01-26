@@ -259,7 +259,7 @@ local TweenSpeedSlider = MovementTab:CreateSlider({
     end,
  }) 
 
- local TweenToIslandSection = MovementTab:CreateSection("Tween to Island")
+local TweenToIslandSection = MovementTab:CreateSection("Tween to Island")
 
 
 local TweenToIslandDropdown = MovementTab:CreateDropdown({
@@ -299,7 +299,7 @@ local TweenToIslandDropdown = MovementTab:CreateDropdown({
             Teleport(CFrame.new(3497, 10, 175))
         end
     end,
- })
+})
 
 
 local TweenToPlayerSection = MovementTab:CreateSection("Tween to Player")
