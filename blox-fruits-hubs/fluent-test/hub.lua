@@ -396,7 +396,7 @@ do -- Shop Tab
     })
     
     GodhumanButton = ShopTab.FightingStyles:AddButton({
-        Title = "[❌] Buy Godhuman",
+        Title = "Activate Godhuman",
         Callback = function()
             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman")
         end
@@ -421,7 +421,7 @@ do -- Shop Tab
         end if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDragonTalon",true) == 1 then
             DragonTalonButton:SetTitle("[✅] Activate Dragon Talon")
         end if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman",true) == 1 then
-            GodhumanButton:SetTitle("[✅] Activate Godhuman")
+            GodhumanButton:SetTitle("[✅] Activate Godhuman (CONTACT THE DEVS IF YOU SEE THIS!)")
         end
     end
     spawn(function()
@@ -438,6 +438,29 @@ do -- Shop Tab
         if string.sub(msg,1,1) ~= '/' then return end
         cmd = string.lower(msg)
         print("Player issued command: "..cmd)
+        if cmd == "/fs darkstep" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyBlackLeg")
+        end if cmd == "/fs electric" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyElectro")
+        end if cmd == "/fs waterkungfu" or cmd == "/fs kungfu" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyFishmanKarate")
+        end if cmd == "/fs dragonbreath" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","DragonClaw","1")
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","DragonClaw","2")
+        end if cmd == "/fs superhuman" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySuperhuman")
+        end if cmd == "/fs deathstep" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDeathStep")
+        end if cmd == "/fs sharkman" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate",true)
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate")
+        end if cmd == "/fs eclaw" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyElectricClaw")
+        end if cmd == "/fs dragontalon" or cmd == "/fs talon" or cmd == "/fs dtalon" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDragonTalon")
+        end if cmd == "/fs godhuman" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman")
+        end
     end
 
     local player = game.Players.LocalPlayer
