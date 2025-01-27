@@ -420,10 +420,12 @@ do -- Shop Tab
             ElectricClawButton:SetTitle("[✅] Activate Electric Claw")
         end if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDragonTalon",true) == 1 then
             DragonTalonButton:SetTitle("[✅] Activate Dragon Talon")
+        end if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman",true) == 1 then
+            GodhumanButton:SetTitle("[✅] Activate Godhuman")
         end
     end
     spawn(function()
-        task.wait(3)
+        task.wait(10)
         checkAll()
     end)
     spawn(function()
