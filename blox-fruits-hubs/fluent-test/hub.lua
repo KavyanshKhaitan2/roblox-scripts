@@ -330,78 +330,118 @@ do -- Movement Tab
 end
 
 do -- Shop Tab
-    ShopTab.FightingStyles:AddButton({
-        Title = "Activate Dark Step",
+    DarkStepButton = ShopTab.FightingStyles:AddButton({
+        Title = "[❌] Buy Dark Step",
         Callback = function()
             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyBlackLeg")
         end
     })
     
-    ShopTab.FightingStyles:AddButton({
-        Title = "Activate Electric",
+    ElectricButton = ShopTab.FightingStyles:AddButton({
+        Title = "[❌] Buy Electric",
         Callback = function()
             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyElectro")
         end
     })
     
-    ShopTab.FightingStyles:AddButton({
-        Title = "Activate Water Kung-Fu",
+    WaterKungFuButton = ShopTab.FightingStyles:AddButton({
+        Title = "[❌] Buy Water Kung-Fu",
         Callback = function()
             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyFishmanKarate")
         end
     })
     
-    ShopTab.FightingStyles:AddButton({
-        Title = "Activate Dragon Breath",
+    DragonBreathButton = ShopTab.FightingStyles:AddButton({
+        Title = "[❌] Buy Dragon Breath",
         Callback = function()
             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","DragonClaw","1")
             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","DragonClaw","2")
         end
     })
     
-    ShopTab.FightingStyles:AddButton({
-        Title = "Activate Superhuman",
+    SuperhumanButton = ShopTab.FightingStyles:AddButton({
+        Title = "[❌] Buy Superhuman",
         Callback = function()
             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySuperhuman")
         end
     })
     
-    ShopTab.FightingStyles:AddButton({
-        Title = "Activate Death Step",
+    DeathStepButton = ShopTab.FightingStyles:AddButton({
+        Title = "[❌] Buy Death Step",
         Callback = function()
             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDeathStep")
         end
     })
     
-    ShopTab.FightingStyles:AddButton({
-        Title = "Activate Sharkman Karate",
+    SharkmanButton = ShopTab.FightingStyles:AddButton({
+        Title = "[❌] Buy Sharkman Karate",
         Callback = function()
             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate",true)
             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate")
         end
     })
     
-    ShopTab.FightingStyles:AddButton({
-        Title = "Activate Electric Claw",
+    ElectricClawButton = ShopTab.FightingStyles:AddButton({
+        Title = "[❌] Buy Electric Claw",
         Callback = function()
             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyElectricClaw")
         end
     })
     
-    ShopTab.FightingStyles:AddButton({
-        Title = "Activate Dragon Talon",
+    DragonTalonButton = ShopTab.FightingStyles:AddButton({
+        Title = "[❌] Buy Dragon Talon",
         Callback = function()
             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDragonTalon")
         end
     })
     
-    ShopTab.FightingStyles:AddButton({
-        Title = "Activate Godhuman",
+    GodhumanButton = ShopTab.FightingStyles:AddButton({
+        Title = "[❌] Buy Godhuman",
         Callback = function()
             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman")
         end
     })
-    
+    function checkAll()
+        if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyBlackLeg",true) == 1 then
+            DarkStepButton:SetTitle("[✅] Activate Dark Step")
+        end if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyElectro",true) == 1 then
+            ElectricButton:SetTitle("[✅] Activate Electric")
+        end if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyFishmanKarate",true) == 1 then
+            WaterKungFuButton:SetTitle("[✅] Activate Water Kung-Fu")
+        end if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward","DragonClaw","1",true) == 1 then
+            DragonBreathButton:SetTitle("[✅] Activate Dragon Breath")
+        end if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySuperhuman",true) == 1 then
+            SuperhumanButton:SetTitle("[✅] Activate Superhuman")
+        end if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDeathStep",true) == 1 then
+            DeathStepButton:SetTitle("[✅] Activate Death Step")
+        end if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate",true) == 1 then
+            SharkmanButton:SetTitle("[✅] Activate Sharkman Karate")
+        end if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyElectricClaw",true) == 1 then
+            ElectricClawButton:SetTitle("[✅] Activate Electric Claw")
+        end if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDragonTalon",true) == 1 then
+            DragonTalonButton:SetTitle("[✅] Activate Dragon Talon")
+        end
+    end
+    spawn(function()
+        task.wait(3)
+        checkAll()
+    end)
+    spawn(function()
+        while task.wait(30) do
+            checkAll()
+        end
+    end)
+
+    function parseCommand(msg)
+        if string.sub(msg,1,1) ~= '/' then return end
+        cmd = string.lower(msg)
+        print("Player issued command: "..cmd)
+    end
+
+    local player = game.Players.LocalPlayer
+    player.Chatted:Connect(function(msg)
+        parseCommand(msg)
+    end)
 end
 
 -- Addons:
